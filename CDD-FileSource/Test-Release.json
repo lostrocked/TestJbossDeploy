@@ -1,0 +1,234 @@
+{
+  "objects": [
+    {
+      "application": "Local|Web",
+      "name": "1.0.1",
+      "kind": "ApplicationVersion"
+    },
+    {
+      "application": "Local|Reporting",
+      "name": "1.0.1",
+      "kind": "ApplicationVersion"
+    },
+    {
+      "application": "Local|Mobile",
+      "name": "1.0.1",
+      "kind": "ApplicationVersion"
+    },
+    {
+      "applicationVersion": "Local|Web/1.0.1",
+      "name": "Web Rally Feature",
+      "kind": "ContentSource",
+      "type": "Add Content",
+      "parameters": {
+        "release": "",
+        "project": "CDD Training",
+        "type": "User Story",
+        "tags": "Sachin"
+      },
+      "endpoint": "Rally",
+      "plugin": "Rally Platform/2.3"
+    },
+    {
+      "commitRegularExpression": "^[ \\\\t]*([A-Za-z0-9_]+)",
+      "applicationVersion": "Local|Web/1.0.1",
+      "name": "1.0.1_commitSource",
+      "kind": "CommitSource",
+      "type": "Get Commit Messages",
+      "parameters": {
+        "owner": "lostrocked",
+        "repository": "TestJbossDeploy"
+      },
+      "endpoint": "Github",
+      "plugin": "GitHub/1.0.1"
+    },
+    {
+      "version": "Q4S1",
+      "runOnCreation": false,
+      "applicationVersions": [
+        "Local|Web/1.0.1",
+        "Local|Reporting/1.0.1",
+        "Local|Mobile/1.0.1"
+      ],
+      "memberParties": [
+        "test2@ca.com"
+      ],
+      "ownerParties": [
+        "test3@ca.com"
+      ],
+      "name": "Online-Banking-FY19",
+      "kind": "Release"
+    },
+    {
+      "value": "1594080",
+      "scope": "RELEASE_SCOPE",
+      "release": "Online-Banking-FY19/Q4S1",
+      "name": "JiraIssueID",
+      "kind": "ReleaseToken"
+    },
+    {
+      "value": "SWCDDTRAIN-23",
+      "scope": "RELEASE_SCOPE",
+      "release": "Online-Banking-FY19/Q4S1",
+      "name": "JiraIssueKey",
+      "kind": "ReleaseToken"
+    },
+    {
+      "value": "http://jira.broadcom.com/rest/api/latest/issue/1594080",
+      "scope": "RELEASE_SCOPE",
+      "release": "Online-Banking-FY19/Q4S1",
+      "name": "SelfLink",
+      "kind": "ReleaseToken"
+    },
+    {
+      "value": "SWCDDTRAIN",
+      "scope": "RELEASE_SCOPE",
+      "release": "Online-Banking-FY19/Q4S1",
+      "name": "JiraProject",
+      "kind": "ReleaseToken"
+    },
+    {
+      "value": "15",
+      "scope": "RELEASE_SCOPE",
+      "release": "Online-Banking-FY19/Q4S1",
+      "name": "local-build-number",
+      "kind": "ReleaseToken"
+    },
+    {
+      "environments": [
+        "UAT"
+      ],
+      "skipTasksWithUnchangedApplications": false,
+      "release": "Online-Banking-FY19/Q4S1",
+      "approvalGate": "AUTOMATIC",
+      "isApprovalRequired": false,
+      "name": "UAT",
+      "kind": "Phase"
+    },
+    {
+      "environments": [
+        "SIT"
+      ],
+      "skipTasksWithUnchangedApplications": false,
+      "plannedStartDate": "13/04/2019 00:00:00 -05",
+      "plannedEndDate": "13/04/2019 07:50:00 -05",
+      "recurrence": {
+        "recurrencePattern": "DAILY",
+        "timeZoneId": "America/Chicago"
+      },
+      "release": "Online-Banking-FY19/Q4S1",
+      "approvalGate": "SCHEDULED",
+      "previousPhase": "UAT",
+      "isApprovalRequired": false,
+      "name": "SIT",
+      "kind": "Phase"
+    },
+    {
+      "environments": [
+        "Pre-Prod"
+      ],
+      "skipTasksWithUnchangedApplications": false,
+      "release": "Online-Banking-FY19/Q4S1",
+      "approvalGate": "MANUAL",
+      "previousPhase": "SIT",
+      "isApprovalRequired": false,
+      "name": "PRE-PROD",
+      "kind": "Phase"
+    },
+    {
+      "environments": [
+        "Prod"
+      ],
+      "skipTasksWithUnchangedApplications": false,
+      "release": "Online-Banking-FY19/Q4S1",
+      "approvalGate": "MANUAL",
+      "previousPhase": "PRE-PROD",
+      "isApprovalRequired": false,
+      "name": "PROD",
+      "kind": "Phase"
+    },
+    {
+      "phase": "Online-Banking-FY19/Q4S1/UAT",
+      "isDisabled": false,
+      "name": "Manual Task",
+      "kind": "Task"
+    },
+    {
+      "previousTasks": [
+        "Manual Task"
+      ],
+      "phase": "Online-Banking-FY19/Q4S1/UAT",
+      "applicationVersions": [
+        "Local|Mobile/1.0.1",
+        "Local|Web/1.0.1",
+        "Local|Reporting/1.0.1"
+      ],
+      "isDisabled": false,
+      "name": "Build Jenkins Jo",
+      "kind": "Task",
+      "type": "Run Build",
+      "parameters": {
+        "project name": "my-web",
+        "taskExpirationTime": "43200",
+        "build_number": "%local-build-number%"
+      },
+      "endpoint": "Jenkins",
+      "plugin": "Jenkins/1.0.2"
+    },
+    {
+      "previousTasks": [
+        "Build Jenkins Jo"
+      ],
+      "phase": "Online-Banking-FY19/Q4S1/UAT",
+      "isDisabled": false,
+      "name": "Create Jira Project",
+      "kind": "Task",
+      "type": "Create JIRA Issue",
+      "parameters": {
+        "issueType": "Story",
+        "summary": "\"Test for tokens, project=\" %JiraProject%",
+        "projectKey": "SWCDDTRAIN",
+        "issueId": "%JiraIssueID%",
+        "issueKey": "%JiraIssueKey%",
+        "advanced": "false",
+        "selfURI": "%SelfLink%"
+      },
+      "endpoint": "Jira",
+      "plugin": "Jira/1.2.1"
+    },
+    {
+      "phase": "Online-Banking-FY19/Q4S1/SIT",
+      "isDisabled": false,
+      "name": "Manual Task",
+      "kind": "Task"
+    },
+    {
+      "previousTasks": [
+        "Manual Task"
+      ],
+      "phase": "Online-Banking-FY19/Q4S1/SIT",
+      "isDisabled": false,
+      "name": "Add Jira Issue Comment",
+      "kind": "Task",
+      "type": "Add JIRA Issue Comment",
+      "parameters": {
+        "issueId": "%JiraIssueKey%",
+        "comment": "%Mobile.last_successful_change%"
+      },
+      "endpoint": "Jira",
+      "plugin": "Jira/1.2.1"
+    },
+    {
+      "phase": "Online-Banking-FY19/Q4S1/PRE-PROD",
+      "isDisabled": false,
+      "name": "Manual Task",
+      "kind": "Task"
+    },
+    {
+      "phase": "Online-Banking-FY19/Q4S1/PROD",
+      "isDisabled": false,
+      "name": "Manual Task",
+      "kind": "Task"
+    }
+  ]
+}
