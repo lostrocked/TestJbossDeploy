@@ -20,9 +20,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "cda_instance" {
-	ami                    = "${var.aws_ami}"
+	ami                    = "ami-07ebfd5b3428b6f4d"
 	instance_type          = "t2.micro"
-	vpc_security_group_ids = ["${var.aws_security_group_id}"]
+	vpc_security_group_ids = "sg-9df8afed"
 	key_name	= "sachin-key-us-east-1"
 
 	user_data = <<HEREDOC
