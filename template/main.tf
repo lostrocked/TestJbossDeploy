@@ -2,7 +2,7 @@ variable "aws_access_key" {default = "AKIAJAWDGTHWN37HFJCQ"}
 variable "aws_secret_key" {default = "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"}
 //variable "aws_ami" {default = "ami-0080e4c5bc078760e"}
 //variable "aws_ami" {default = "ami-07ebfd5b3428b6f4d"}
-//variable "aws_security_group_id" {default = "sg-193b7469"}
+variable "aws_security_group_id" {default = "sg-9df8afed"}
 variable "instance_type" {default = "t2.micro"}
 locals {
 	in_id = "${random_string.password.result}"
@@ -22,7 +22,7 @@ provider "aws" {
 resource "aws_instance" "cda_instance" {
 	ami                    = "ami-07ebfd5b3428b6f4d"
 	instance_type          = "t2.micro"
-	vpc_security_group_ids = "sg-9df8afed"
+	vpc_security_group_ids = ["${aws_security_group.example.*.id}"]
 	key_name	= "sachin-key-us-east-1"
 
 	user_data = <<HEREDOC
