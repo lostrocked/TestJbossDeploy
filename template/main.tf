@@ -25,7 +25,7 @@ resource "aws_instance" "cda_instance" {
 	vpc_security_group_ids = [
         			"sg-9df8afed",
         ]
-	key_name	= "sachin-key-us-east-1"
+	key_name	= "Linux-Server-Private-Key"
 	subnet_id = "subnet-0b785b41f955a4909"
 
 	user_data = <<HEREDOC
