@@ -17,10 +17,6 @@ variable "aws_ami" {
 	default = "ami-07ebfd5b3428b6f4d"
 }
 
-variable "aws_security_group_id" {
-	default = "sg-193b7469"
-}
-
 variable "email" {
 	default = "sachin.srivastava@broadcom.com"
 }
