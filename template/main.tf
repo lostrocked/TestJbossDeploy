@@ -26,6 +26,7 @@ resource "aws_instance" "cda_instance" {
         			"sg-9df8afed",
         ]
 	key_name	= "sachin-key-us-east-1"
+	subnet_id = "subnet-0b785b41f955a4909"
 
 	user_data = <<HEREDOC
 		#!/bin/bash
