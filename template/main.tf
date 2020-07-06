@@ -1,5 +1,4 @@
-variable "aws_access_key" {default = "AKIAJAWDGTHWN37HFJCQ"}
-variable "aws_secret_key" {default = "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"}
+
 variable "aws_security_group_id" {default = "sg-01a2407a79391adca"}
 variable "instance_type" {default = "t2.micro"}
 locals {
