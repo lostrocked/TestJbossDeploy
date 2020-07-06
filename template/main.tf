@@ -1,4 +1,5 @@
-
+variable "aws_access_key" {default = "AKIAJAWDGTHWN37HFJCQ"}
+variable "aws_secret_key" {default = "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"}
 variable "aws_security_group_id" {default = "sg-01a2407a79391adca"}
 variable "instance_type" {default = "t2.micro"}
 locals {
@@ -42,7 +43,7 @@ resource "aws_instance" "cda_instance" {
 		docker-compose build
 		docker-compose up -d
 		cd /tmp
-		printf '%s\n' '{"Source": "zhenya.stoeva@gmail.com", "Template": "MyTemplateJ_${local.in_id}", "ConfigurationSetName": "ConfigSet", "Destination": {"ToAddresses": [ "jenya.stoeva@broadcom.com"]}, "TemplateData": "{}"}' >myemail1.json
+		printf '%s\n' '{"Source": "lostrocked3@gmail.com", "Template": "MyTemplateJ_${local.in_id}", "ConfigurationSetName": "ConfigSet", "Destination": {"ToAddresses": [ "sachin.srivastava@broadcom.com"]}, "TemplateData": "{}"}' >myemail1.json
 		export AWS_ACCESS_KEY_ID=${var.access_key} 
 		export AWS_SECRET_ACCESS_KEY=${var.secret_key}
 		export AWS_DEFAULT_REGION=us-east-1
