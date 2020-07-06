@@ -1,8 +1,6 @@
-variable "aws_access_key"
-variable "aws_secret_key"
-//variable "aws_ami" {default = "ami-0080e4c5bc078760e"}
-//variable "aws_ami" {default = "ami-07ebfd5b3428b6f4d"}
-variable "aws_security_group_id" 
+variable "aws_ami" {default = "ami-0080e4c5bc078760e"}
+variable "aws_ami" {default = "ami-07ebfd5b3428b6f4d"}
+variable "aws_security_group_id" {default = "sg-01a2407a79391adca"}
 variable "instance_type" {default = "t2.micro"}
 locals {
 	in_id = "${random_string.password.result}"
