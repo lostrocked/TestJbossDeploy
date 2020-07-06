@@ -23,7 +23,7 @@ resource "aws_instance" "cda_instance" {
 	vpc_security_group_ids = [
         			"sg-01a2407a79391adca",
         ]
-	key_name	= "Linux-Server-Private-Key"
+	key_name	= "hayabusa"
 	subnet_id = "subnet-9df4e8a3"
 
 	user_data = <<HEREDOC
