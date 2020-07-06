@@ -7,14 +7,14 @@ variable "secret_key" {
 }
 
 variable "aws_key_name" {
-	default = "sachin-key-us-east-1"
+	default = "hayabusa"
 }
 
 variable "private_key_file" {
-	default = "jeny-key-us-east-1.pem"
+	default = "hayabusa.pem"
 }
 variable "aws_ami" {
-	default = "ami-07ebfd5b3428b6f4d"
+	default = "ami-098f16afa9edf40be"
 }
 
 variable "email" {
