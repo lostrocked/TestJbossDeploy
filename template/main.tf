@@ -36,8 +36,8 @@ resource "aws_instance" "cda_instance" {
 		chmod +x /usr/local/bin/docker-compose
 		sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 		yum install -y git
-		mkdir  /tmp/jenya
-                cd /tmp/jenya
+		mkdir  /tmp/demoim
+                cd /tmp/demoim
 		git clone git://github.com/jenyss/requestbin.git
 		cd requestbin
 		docker-compose build
@@ -53,9 +53,9 @@ resource "aws_instance" "cda_instance" {
 
 resource "aws_ses_template" "MyTemplateJ" {
 	name    = "MyTemplateJ_${local.in_id}"
-	subject = "Greetings, Jeny!"
-	html    = "<h1>Hello Jeny,</h1><p>Your app url is http://${aws_instance.cda_instance.*.public_ip[0]}.</p>"
-	text    = "Hello Jeny, Your app url is http://${aws_instance.cda_instance.*.public_ip[0]}."
+	subject = "Greetings, Master Williams!"
+	html    = "<h1>Hello Master Williams,</h1><p>Your app url is http://${aws_instance.cda_instance.*.public_ip[0]}.</p>"
+	text    = "Hello Master Williams, Your app url is http://${aws_instance.cda_instance.*.public_ip[0]}."
 }
 
 output "public_ip" {
