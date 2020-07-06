@@ -21,7 +21,7 @@ resource "aws_instance" "cda_instance" {
 	ami                    = "ami-098f16afa9edf40be"
 	instance_type          = "t2.micro"
 	vpc_security_group_ids = [
-        			"sg-9df8afed",
+        			"subnet-29c11608",
         ]
 	key_name	= "Linux-Server-Private-Key"
 	subnet_id = "subnet-29c11608"
