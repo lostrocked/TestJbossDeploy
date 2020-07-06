@@ -1,8 +1,8 @@
-variable "aws_access_key" {default = "AKIAJAWDGTHWN37HFJCQ"}
-variable "aws_secret_key" {default = "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"}
+variable "aws_access_key"
+variable "aws_secret_key"
 //variable "aws_ami" {default = "ami-0080e4c5bc078760e"}
 //variable "aws_ami" {default = "ami-07ebfd5b3428b6f4d"}
-variable "aws_security_group_id" {default = "sg-9df8afed"}
+variable "aws_security_group_id" 
 variable "instance_type" {default = "t2.micro"}
 locals {
 	in_id = "${random_string.password.result}"
@@ -20,13 +20,13 @@ provider "aws" {
 }
 
 resource "aws_instance" "cda_instance" {
-	ami                    = "ami-07ebfd5b3428b6f4d"
+	ami                    = "ami-098f16afa9edf40be"
 	instance_type          = "t2.micro"
 	vpc_security_group_ids = [
         			"sg-9df8afed",
         ]
 	key_name	= "Linux-Server-Private-Key"
-	subnet_id = "subnet-0b785b41f955a4909"
+	subnet_id = "subnet-29c11608"
 
 	user_data = <<HEREDOC
 		#!/bin/bash
